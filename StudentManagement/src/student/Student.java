@@ -254,12 +254,29 @@ public class Student {
             ps = c.prepareStatement(sql);
             ps.setString(1, maSV);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 name = rs.getString(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
         }
         return name;
+    }
+
+    public int sum_credit(String maSV) {
+        int credit = 0;
+        try {
+            String sql = "select sum(credit) from class "
+                    + "join study on study.maLop = class.maLop "
+                    + "where maSV=?";
+            ps = c.prepareStatement(sql);
+            ps.setString(1, maSV);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+                credit = rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return credit;
     }
 }
