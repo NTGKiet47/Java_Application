@@ -5,11 +5,12 @@ drop table class;
 drop table student;
 drop table mark;
 drop table study;
+drop table admins;
 
-create table admin(
-	id int primary key not null auto_increment,
-    username varchar(50) not null,
-    password varchar(50) not null
+create table admins(
+    adminID varchar(5) primary key not null,
+    adminName varchar(50) not null,
+    adminPassword varchar(50) not null
 );
 create table student(
 	student_id int primary key auto_increment,
@@ -101,20 +102,12 @@ values("B2110084", "tn010", 'A', "2021-2022"),
 ("B2110084", "ct188", 'A', "2021-2022"),
 ("B2110084", "ct276", 'A', "2021-2022");
 
+insert into admins(adminID, adminName,  adminPassword)
+values("AD001", "admin1",  "4703");
 
 select * from class;
 select * from  mark;
 select * from student;
 select * from study;
+select * from admins;
 
-select distinct semester, mark.schoolYear, mark.mark, class.maLop, credit, className from student
-join mark on mark.masv = student.masv
-join class on class.malop = mark.malop
-join study on study.malop = class.malop
-where student.masv="B2110084" and mark.schoolYear = "2021-2022" and semester = 1;
-
-select mark, credit from mark 
-join student on student.maSV = mark.maSV
-join class on class.maLop = mark.maLop
-join study on study.maLop = class.maLop
-where student.maSV = "B2110084" and semester = 1;
