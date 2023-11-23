@@ -1244,6 +1244,8 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         dispose();
+        Login log_page = new Login();
+        log_page.setVisible(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed

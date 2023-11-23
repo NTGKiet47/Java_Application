@@ -8,9 +8,11 @@ drop table study;
 drop table admins;
 
 create table admins(
-    adminID varchar(5) primary key not null,
-    adminName varchar(50) not null,
-    adminPassword varchar(50) not null
+	teacherName varchar(50) not null,
+    adminName varchar(50) primary key not null,
+    adminPassword varchar(50) not null,
+    email varchar(50) not null,
+    teacherID varchar(5) not null
 );
 create table student(
 	student_id int primary key auto_increment,
@@ -102,8 +104,8 @@ values("B2110084", "tn010", 'A', "2021-2022"),
 ("B2110084", "ct188", 'A', "2021-2022"),
 ("B2110084", "ct276", 'A', "2021-2022");
 
-insert into admins(adminID, adminName,  adminPassword)
-values("AD001", "admin1",  "4703");
+insert into admins
+values("admin1",  "4703");
 
 select * from class;
 select * from  mark;
