@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package student;
+
 import java.sql.*;
 import database.connect_db;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +26,7 @@ public class Register extends javax.swing.JFrame {
 
     Connection c = connect_db.getConnection();
     PreparedStatement ps;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +38,8 @@ public class Register extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_reg_reg = new javax.swing.JButton();
@@ -57,13 +63,29 @@ public class Register extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel4.setText("LOG IN");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
+        setPreferredSize(new java.awt.Dimension(561, 372));
+        setResizable(false);
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("STUDENT MANAGEMENT SYSTEM - KIT");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setText("LOG IN");
+        jLabel5.setText("REGISTER");
 
         btn_reg_reg.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_reg_reg.setText("Register");
@@ -75,9 +97,16 @@ public class Register extends javax.swing.JFrame {
 
         btn_reg_log.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_reg_log.setText("Login");
+        btn_reg_log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reg_logActionPerformed(evt);
+            }
+        });
 
         btn_reg_clear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btn_reg_clear.setText("Clear");
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Teacher Name:");
@@ -127,7 +156,7 @@ public class Register extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ipt_reg_name, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -150,72 +179,134 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel5)
-                                .addGap(75, 75, 75))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(btn_reg_log, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_reg_reg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_reg_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_reg_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(113, 113, 113))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_reg_reg)
                     .addComponent(btn_reg_log)
                     .addComponent(btn_reg_clear))
-                .addGap(28, 28, 28))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean check_regInfo(){
+    public boolean check_regInfo() {
         String teacherName = ipt_reg_name.getText();
         String email = ipt_reg_email.getText();
         String id = ipt_reg_id.getText();
         String userName = ipt_reg_username.getText();
         String password = ipt_reg_pass.getText();
-        if(teacherName.isEmpty()){
+        if (teacherName.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Name cannot be empty");
+            ipt_reg_name.requestFocus();
             return false;
         }
-        if(email){
-            
+        if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email cannot be empty");
+            ipt_reg_email.requestFocus();
+            return false;
         }
-        JOptionPane.showMessageDialog(this, "Register sucessfully");
+        if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Teacher ID cannot be empty");
+            ipt_reg_id.requestFocus();
+            return false;
+        }
+        if (userName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username cannot be empty");
+            ipt_reg_username.requestFocus();
+            return false;
+        }
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            ipt_reg_pass.requestFocus();
+            return false;
+        }
         return true;
     }
-    
+
     private void btn_reg_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reg_regActionPerformed
-        
+        if (check_regInfo()) {
+            String teacherName = ipt_reg_name.getText();
+            String email = ipt_reg_email.getText();
+            String id = ipt_reg_id.getText();
+            String userName = ipt_reg_username.getText();
+            String password = ipt_reg_pass.getText();
+            String sql = "insert into admins(?,?,?,?,?);";
+            try {
+                ps = c.prepareStatement(sql);
+                ps.setString(1, teacherName);
+                ps.setString(2, email);
+                ps.setString(3, id);
+                ps.setString(4, userName);
+                ps.setString(5, password);
+                if (ps.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(this, "Register sucessfully");
+                    dispose();
+                    Login log_page = new Login();
+                    log_page.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Something went wrong!!!");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }//GEN-LAST:event_btn_reg_regActionPerformed
+
+    private void btn_reg_logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reg_logActionPerformed
+        dispose();
+        Login log_page = new Login();
+        log_page.setVisible(true);
+    }//GEN-LAST:event_btn_reg_logActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,5 +363,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

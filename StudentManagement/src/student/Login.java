@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package student;
+
 import java.sql.*;
 import database.connect_db;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +26,7 @@ public class Login extends javax.swing.JFrame {
 
     Connection c = connect_db.getConnection();
     PreparedStatement ps;
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,6 +44,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(561, 372));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -85,6 +88,11 @@ public class Login extends javax.swing.JFrame {
 
         btn_login_regis.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_login_regis.setText("Register");
+        btn_login_regis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_login_regisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,27 +172,52 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_ipt_log_pasComponentHidden
 
     private void ipt_log_pasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ipt_log_pasKeyTyped
-        
+
     }//GEN-LAST:event_ipt_log_pasKeyTyped
 
+    public boolean check_logInfo() {
+        String name = ipt_log_name.getText();
+        String pass = ipt_log_pas.getText();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Type in your username");
+            ipt_log_name.requestFocus();
+            return false;
+        }
+        if (pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Type in your password");
+            ipt_log_pas.requestFocus();
+            return false;
+        }
+        return true;
+    }
     private void btn_login_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_loginActionPerformed
-        String sql = "select * from admins where adminName=? and adminPassword=?";
-        String name = ipt_log_name.getText().trim();
-        String pass = ipt_log_pas.getText().trim();
-        try {
-            ps = c.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setString(2, pass);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                dispose();
-                Home home_page = new Home();
-                home_page.setVisible(true);
+        if (check_logInfo()) {
+            String sql = "select * from admins where adminName=? and adminPassword=?";
+            String name = ipt_log_name.getText().trim();
+            String pass = ipt_log_pas.getText().trim();
+            try {
+                ps = c.prepareStatement(sql);
+                ps.setString(1, name);
+                ps.setString(2, pass);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    dispose();
+                    Home home_page = new Home();
+                    home_page.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Wrong username or password");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_login_loginActionPerformed
+
+    private void btn_login_regisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_regisActionPerformed
+        dispose();
+        Register reg_page = new Register();
+        reg_page.setVisible(true);
+    }//GEN-LAST:event_btn_login_regisActionPerformed
 
     /**
      * @param args the command line arguments
