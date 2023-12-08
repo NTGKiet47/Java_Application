@@ -231,7 +231,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel1.setText("STUDENT MANAGEMENT SYSTEM - KIT");
+        jLabel1.setText("STUDENT MANAGEMENT SYSTEM");
 
         btn_logout.setBackground(new java.awt.Color(255, 204, 153));
         btn_logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -428,13 +428,14 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ipt_maSV)
-                                        .addComponent(ipt_studentID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ipt_studentName)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(chose_dateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 56, Short.MAX_VALUE))
-                                    .addComponent(ipt_studentName))))
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(ipt_maSV)
+                                                .addComponent(ipt_studentID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(chose_dateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 56, Short.MAX_VALUE)))))
                         .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -565,27 +566,21 @@ public class Home extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(student_info_table);
         if (student_info_table.getColumnModel().getColumnCount() > 0) {
-            student_info_table.getColumnModel().getColumn(0).setMinWidth(20);
+            student_info_table.getColumnModel().getColumn(0).setResizable(false);
             student_info_table.getColumnModel().getColumn(0).setPreferredWidth(30);
-            student_info_table.getColumnModel().getColumn(0).setMaxWidth(30);
-            student_info_table.getColumnModel().getColumn(1).setMinWidth(90);
+            student_info_table.getColumnModel().getColumn(1).setResizable(false);
             student_info_table.getColumnModel().getColumn(1).setPreferredWidth(90);
-            student_info_table.getColumnModel().getColumn(1).setMaxWidth(90);
-            student_info_table.getColumnModel().getColumn(2).setMinWidth(100);
+            student_info_table.getColumnModel().getColumn(2).setResizable(false);
             student_info_table.getColumnModel().getColumn(2).setPreferredWidth(130);
-            student_info_table.getColumnModel().getColumn(2).setMaxWidth(130);
-            student_info_table.getColumnModel().getColumn(3).setMinWidth(70);
+            student_info_table.getColumnModel().getColumn(3).setResizable(false);
             student_info_table.getColumnModel().getColumn(3).setPreferredWidth(80);
-            student_info_table.getColumnModel().getColumn(3).setMaxWidth(80);
-            student_info_table.getColumnModel().getColumn(4).setMinWidth(50);
+            student_info_table.getColumnModel().getColumn(4).setResizable(false);
             student_info_table.getColumnModel().getColumn(4).setPreferredWidth(70);
-            student_info_table.getColumnModel().getColumn(4).setMaxWidth(70);
-            student_info_table.getColumnModel().getColumn(5).setMinWidth(70);
+            student_info_table.getColumnModel().getColumn(5).setResizable(false);
             student_info_table.getColumnModel().getColumn(5).setPreferredWidth(90);
-            student_info_table.getColumnModel().getColumn(5).setMaxWidth(90);
-            student_info_table.getColumnModel().getColumn(6).setMinWidth(90);
+            student_info_table.getColumnModel().getColumn(6).setResizable(false);
             student_info_table.getColumnModel().getColumn(6).setPreferredWidth(200);
-            student_info_table.getColumnModel().getColumn(6).setMaxWidth(200);
+            student_info_table.getColumnModel().getColumn(7).setResizable(false);
             student_info_table.getColumnModel().getColumn(7).setPreferredWidth(180);
         }
 
@@ -1281,12 +1276,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_print_studentsActionPerformed
 
     private void btn_show_all_studentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_show_all_studentsActionPerformed
-        student_info_table.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
+        student_info_table.setModel(new DefaultTableModel(null, new Object[]{"No.", "Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
         student.getStudentInfo(student_info_table, "");
     }//GEN-LAST:event_btn_show_all_studentsActionPerformed
 
     private void btn_clearStudent_onTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearStudent_onTableActionPerformed
-        student_info_table.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
+        student_info_table.setModel(new DefaultTableModel(null, new Object[]{"No.", "Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
     }//GEN-LAST:event_btn_clearStudent_onTableActionPerformed
 
     private void btn_deleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteStudentActionPerformed
@@ -1294,7 +1289,7 @@ public class Home extends javax.swing.JFrame {
         if (student.isIdExist(id)) {
             // thuc hien xoa
             student.deleteStudentInfo(id);
-            student_info_table.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
+            student_info_table.setModel(new DefaultTableModel(null, new Object[]{"No.", "Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
             student.getStudentInfo(student_info_table, "");
             clear_student_info();
         } else {
@@ -1337,7 +1332,7 @@ public class Home extends javax.swing.JFrame {
         } else {
             String maSV = search_student_for_info.getText().toString();
             if (student.check_maSV(maSV)) {
-                student_info_table.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
+                student_info_table.setModel(new DefaultTableModel(null, new Object[]{"No.", "Student ID", "Name", "Date of birth", "Gender", "Phone number", "Email", "Address"}));
                 student.getStudentInfo_by_maSV(student_info_table, maSV);
             } else {
                 JOptionPane.showMessageDialog(this, "Id does not exist");
@@ -1385,7 +1380,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_addStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addStudentActionPerformed
         if (isEmptyStudent()) { //true la ko rong ---> hop le
-            if (check_phoneNumber_exist() && check_email_exist() && check_ID_exist() && check_maSV_exist()) {
+            if (check_maSV_exist() && check_phoneNumber_exist() && check_email_exist() && check_ID_exist()) {
                 int id = student.getMax();
                 String maSV = new String(ipt_maSV.getText());
                 String name = new String(ipt_studentName.getText());
@@ -1536,27 +1531,41 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_find_student_for_markActionPerformed
 
     private void btn_clearID__markActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearID__markActionPerformed
-        // TODO add your handling code here:
+        search_student_for_mark.setText("");
+        opt_studentName__mark.setText("");
+        compb_SearchSchoolyear.setSelectedIndex(0);
+        compb_SearchSemester.setSelectedIndex(0);
+        opt_totalScore.setText("");
     }//GEN-LAST:event_btn_clearID__markActionPerformed
 
     private void btn_printClasses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printClasses2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            MessageFormat header = new MessageFormat("Student Mark");
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            mark_info_table.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_printClasses2ActionPerformed
 
     private void btn_clearClass_onTable__class2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearClass_onTable__class2ActionPerformed
-        // TODO add your handling code here:
+        mark_info_table.setModel(new DefaultTableModel(null, new Object[]{"Semester", "School Year", "Mark", "Class ID", "Credit", "Class name"}));
     }//GEN-LAST:event_btn_clearClass_onTable__class2ActionPerformed
 
     private void btn_showMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showMarkActionPerformed
         // Xem diem cua sinh vien
+        if(search_student_for_mark.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter student ID first");
+            return;
+        }
         String maSV = search_student_for_mark.getText();
         String schoolyear = compb_SearchSchoolyear.getSelectedItem().toString();
         int semester = Integer.parseInt(compb_SearchSemester.getSelectedItem().toString());
         mark_info_table.setModel(new DefaultTableModel(null, new Object[]{"Semester", "School Year", "Mark", "Class ID", "Credit", "Class name"}));
         stu_mark.get_mark_by_stuID(mark_info_table, maSV, schoolyear, semester);
-        
+
         double diemTBHk = stu_mark.sum_mark(maSV, schoolyear, semester);
-        opt_totalScore.setText(diemTBHk+"");
+        opt_totalScore.setText(diemTBHk + "");
     }//GEN-LAST:event_btn_showMarkActionPerformed
 
 //    kiem tra thong tin da ton tai chua
@@ -1571,6 +1580,15 @@ public class Home extends javax.swing.JFrame {
         return false;
     }
 
+    public boolean check_ID_exist() {
+        if (!student.isIdExist(Integer.parseInt(ipt_studentID.getText()))) {
+            return true;
+        }
+        JOptionPane.showMessageDialog(this, "No already existed");
+        ipt_studentID.setText("" + student.getMax());
+        return false;
+    }    // click vao hang nao thi hang do hien du lieu    // xoa sinh vien
+
     public boolean check_phoneNumber_exist() {
         int id = Integer.parseInt(ipt_studentID.getText());
         if (!student.isPhoneNumberExist(ipt_studentPhoneNumber.getText(), id)) {
@@ -1580,15 +1598,6 @@ public class Home extends javax.swing.JFrame {
         ipt_studentPhoneNumber.requestFocus();
         return false;
     }
-
-    public boolean check_ID_exist() {
-        if (!student.isIdExist(Integer.parseInt(ipt_studentID.getText()))) {
-            return true;
-        }
-        JOptionPane.showMessageDialog(this, "No already existed");
-        ipt_studentID.setText("" + student.getMax());
-        return false;
-    }    // click vao hang nao thi hang do hien du lieu    // xoa sinh vien
 
     public boolean check_maSV_exist() {
         int id = Integer.parseInt(ipt_studentID.getText());

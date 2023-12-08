@@ -9,10 +9,10 @@ drop table admins;
 
 create table admins(
 	teacherName varchar(50) not null,
-    adminName varchar(50) primary key not null,
-    adminPassword varchar(50) not null,
     email varchar(50) not null,
-    teacherID varchar(5) not null
+    teacherID varchar(5) not null,
+    adminName varchar(50) primary key not null,
+    adminPassword varchar(50) not null
 );
 create table student(
 	student_id int primary key auto_increment,
@@ -30,24 +30,20 @@ create table class(
     className varchar(50) not null,
     credit int not null
 );
-create table study(
-	maLop varchar(5) not null references class(maLop),
-    maSV varchar(8) not null references student(maSV),
-    semester int not null,
-    schoolYear varchar(9),
-    primary key(maLop, maSV)
+CREATE TABLE study (
+  maLop VARCHAR(5) NOT NULL REFERENCES class(maLop) ON DELETE CASCADE,
+  maSV VARCHAR(8) NOT NULL REFERENCES student(maSV) ON DELETE CASCADE,
+  semester INT NOT NULL,
+  schoolYear VARCHAR(9),
+  PRIMARY KEY (maLop, maSV)
 );
 create table mark(
-	maSV varchar(8) not null references student(maSV),
-    maLop varchar(5) not null references class(maLop),
+	maSV varchar(8) not null references student(maSV) ON DELETE CASCADE,
+    maLop varchar(5) not null references class(maLop) ON DELETE CASCADE,
     mark varchar(2) not null,
-    schoolYear varchar(9) not null references study(schoolYear), 
+    schoolYear varchar(9) not null references study(schoolYear) ON DELETE CASCADE, 
     primary key (maSV, maLop)
 );
-select * from student;
-select * from class;
-select * from study;
-select * from mark;
 
 insert into student(maSV, name, date_of_birth, gender, phoneNumber, email, address)
 values ("B2110037", "Le Nguyen Cong Thanh", "03-07-2003", "Male", "0898023564", "thanhB2110037@student.ctu.edu.vn", "Tan Phu, Cai Rang"),
@@ -71,14 +67,11 @@ values ("ct276", "Lap trinh Java", 3),
 ("ct173", "Kien truc may tinh", 3),
 ("ct182", "Ngon ngu mo hinh hoa", 3),
 ("ml014", "Triet hoc Mac-Lenin", 3),
-("ct176", "Lap trinh huong doi tuong", 3);
-
-insert into class (maLop, className, credit) 
-values ("ct179", "Quan tri he thong", 3),
+("ct176", "Lap trinh huong doi tuong", 3),
+("ct179", "Quan tri he thong", 3),
 ("ct113", "Nhap mon cong nghe phan mem", 3),
 ("ct112", "Mang may tinh", 3),
-("ml021", "Tu tuong Ho Chi Minh", 3)
-;
+("ml021", "Tu tuong Ho Chi Minh", 3);
 
 insert into study(maLop, maSV, semester, schoolYear)
 values("ct177", "B2110084", 1, "2021-2022"),
@@ -92,6 +85,18 @@ values("ct177", "B2110084", 1, "2021-2022"),
 ("ct241", "B2110084", 2, "2021-2022"),
 ("ct276", "B2110084", 2, "2021-2022");
 
+insert into study(maLop, maSV, semester, schoolYear)
+values("ct177", "B2110001", 1, "2021-2022"),
+("tn010", "B2110001", 1, "2021-2022"),
+("ml014", "B2110001", 1, "2021-2022"),
+("ct173", "B2110001", 1, "2021-2022"),
+("ct175", "B2110001", 1, "2021-2022"),
+("ct182", "B2110001", 2, "2021-2022"),
+("ct178", "B2110001", 2, "2021-2022"),
+("ct188", "B2110001", 2, "2021-2022"),
+("ct241", "B2110001", 2, "2021-2022"),
+("ct276", "B2110001", 2, "2021-2022");
+
 insert into mark
 values("B2110084", "tn010", 'A', "2021-2022"),
 ("B2110084", "ml014", 'D',  "2021-2022"),
@@ -104,12 +109,23 @@ values("B2110084", "tn010", 'A', "2021-2022"),
 ("B2110084", "ct188", 'A', "2021-2022"),
 ("B2110084", "ct276", 'A', "2021-2022");
 
+insert into mark
+values("B2110001", "tn010", 'A', "2021-2022"),
+("B2110001", "ml014", 'D',  "2021-2022"),
+("B2110001", "ct177", 'C+',  "2021-2022"),
+("B2110001", "ct173", 'A',  "2021-2022"),
+("B2110001", "ct175", 'A',  "2021-2022"),
+("B2110001", "ct182", 'B+', "2021-2022"),
+("B2110001", "ct178", 'B+', "2021-2022"),
+("B2110001", "ct241", 'A', "2021-2022"),
+("B2110001", "ct188", 'A', "2021-2022"),
+("B2110001", "ct276", 'A', "2021-2022");
+
 insert into admins
-values("admin1",  "4703");
+values("Kiet","nguyentrangiakiet47@gmail.com","GV123","admin1",  "4703");
 
-select * from class;
-select * from  mark;
 select * from student;
-select * from study;
+select * from class;
+select * from study order by maSV;
+select * from  mark order by maSV;
 select * from admins;
-

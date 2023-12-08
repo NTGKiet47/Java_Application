@@ -39,7 +39,6 @@ public class Register extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,10 +49,11 @@ public class Register extends javax.swing.JFrame {
         ipt_reg_email = new javax.swing.JTextField();
         ipt_reg_id = new javax.swing.JTextField();
         ipt_reg_username = new javax.swing.JTextField();
-        ipt_reg_pass = new javax.swing.JTextField();
         btn_reg_reg = new javax.swing.JButton();
         btn_reg_log = new javax.swing.JButton();
         btn_reg_clear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ipt_reg_pass = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -69,9 +69,6 @@ public class Register extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("STUDENT MANAGEMENT SYSTEM - KIT");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setText("REGISTER");
@@ -115,6 +112,11 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("STUDENT MANAGEMENT SYSTEM ");
+
+        ipt_reg_pass.setToolTipText("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -123,22 +125,15 @@ public class Register extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(326, 326, 326))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(131, 131, 131)
-                            .addComponent(ipt_reg_pass)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(322, 322, 322))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(131, 131, 131)
-                            .addComponent(ipt_reg_username)))
+                            .addComponent(jLabel7)
+                            .addGap(63, 63, 63)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ipt_reg_username)
+                                .addComponent(ipt_reg_pass))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(142, 142, 142)
-                            .addComponent(jLabel1))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(76, 76, 76)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,6 +168,10 @@ public class Register extends javax.swing.JFrame {
                                     .addComponent(btn_reg_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(22, 22, 22))))))
                 .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(155, 155, 155))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +263,7 @@ public class Register extends javax.swing.JFrame {
             String id = ipt_reg_id.getText();
             String userName = ipt_reg_username.getText();
             String password = ipt_reg_pass.getText();
-            String sql = "insert into admins(?,?,?,?,?);";
+            String sql = "insert into admins values(?,?,?,?,?);";
             try {
                 ps = c.prepareStatement(sql);
                 ps.setString(1, teacherName);
@@ -283,7 +282,6 @@ public class Register extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }//GEN-LAST:event_btn_reg_regActionPerformed
 
@@ -343,7 +341,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField ipt_reg_email;
     private javax.swing.JTextField ipt_reg_id;
     private javax.swing.JTextField ipt_reg_name;
-    private javax.swing.JTextField ipt_reg_pass;
+    private javax.swing.JPasswordField ipt_reg_pass;
     private javax.swing.JTextField ipt_reg_username;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -37,10 +37,10 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ipt_log_name = new javax.swing.JTextField();
-        ipt_log_pas = new javax.swing.JTextField();
         btn_login_login = new javax.swing.JButton();
         btn_login_clear = new javax.swing.JButton();
         btn_login_regis = new javax.swing.JButton();
+        ipt_log_pas = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(561, 372));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("STUDENT MANAGEMENT SYSTEM - KIT");
+        jLabel1.setText("STUDENT MANAGEMENT SYSTEM ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Username:");
@@ -58,17 +58,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel4.setText("LOG IN");
-
-        ipt_log_pas.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                ipt_log_pasComponentHidden(evt);
-            }
-        });
-        ipt_log_pas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ipt_log_pasKeyTyped(evt);
-            }
-        });
 
         btn_login_login.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_login_login.setText("Login");
@@ -108,22 +97,22 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ipt_log_name, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ipt_log_pas, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ipt_log_name, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(ipt_log_pas))
                 .addGap(87, 87, 87))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(btn_login_regis)
                         .addGap(18, 18, 18)
                         .addComponent(btn_login_login, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_login_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_login_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,16 +126,16 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(ipt_log_name, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(ipt_log_pas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login_clear)
                     .addComponent(btn_login_login)
                     .addComponent(btn_login_regis))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,14 +155,6 @@ public class Login extends javax.swing.JFrame {
     private void btn_login_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_clearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_login_clearActionPerformed
-
-    private void ipt_log_pasComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ipt_log_pasComponentHidden
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ipt_log_pasComponentHidden
-
-    private void ipt_log_pasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ipt_log_pasKeyTyped
-
-    }//GEN-LAST:event_ipt_log_pasKeyTyped
 
     public boolean check_logInfo() {
         String name = ipt_log_name.getText();
@@ -259,7 +240,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_login_login;
     private javax.swing.JButton btn_login_regis;
     private javax.swing.JTextField ipt_log_name;
-    private javax.swing.JTextField ipt_log_pas;
+    private javax.swing.JPasswordField ipt_log_pas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
